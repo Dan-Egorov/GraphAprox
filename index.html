@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Approximator Pro - Скачать приложение</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo i {
+            font-size: 3rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .app-screenshot {
+            max-width: 800px;
+            margin: 30px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: #f8f9fa;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .app-screenshot i {
+            font-size: 5rem;
+            color: #26d0ce;
+            margin-right: 20px;
+        }
+
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(45deg, #FF416C, #FF4B2B);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 65, 108, 0.3);
+            margin: 20px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 65, 108, 0.4);
+        }
+
+        .download-btn.windows {
+            background: linear-gradient(45deg, #0078D7, #00BCF2);
+            box-shadow: 0 10px 30px rgba(0, 120, 215, 0.3);
+        }
+
+        .download-btn.windows:hover {
+            box-shadow: 0 15px 35px rgba(0, 120, 215, 0.4);
+        }
+
+        .download-btn.mac {
+            background: linear-gradient(45deg, #555, #888);
+            box-shadow: 0 10px 30px rgba(85, 85, 85, 0.3);
+        }
+
+        .download-btn.mac:hover {
+            box-shadow: 0 15px 35px rgba(85, 85, 85, 0.4);
+        }
+
+        .file-size {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #26d0ce;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #1a2980;
+        }
+
+        /* Requirements */
+        .requirements {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .requirements h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1a2980;
+        }
+
+        .requirement-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .requirement-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #26d0ce;
+        }
+
+        /* Instructions */
+        .instructions {
+            background: #1a2980;
+            color: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .steps {
+            counter-reset: step;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .step {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 30px;
+        }
+
+        .step:before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #26d0ce;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: white;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+        }
+
+        .version {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 30px 20px;
+            }
+            
+            .download-btn {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .download-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .platform {
+            text-align: center;
+        }
+
+        .platform-name {
+            font-weight: bold;
+            margin-top: 10px;
+            color: #1a2980;
+        }
+
+        .version-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <h1>Function Approximator Pro</h1>
+            </div>
+            <p class="tagline">Мощное приложение для анализа данных и аппроксимации функций</p>
+        </header>
+
+        <section class="hero">
+            <h2>Скачайте бесплатную версию приложения</h2>
+            <p>Работает на Windows, macOS. Не требует установки дополнительных библиотек.</p>
+            
+        </section>
+
+        <section class="download-section">
+            <h2>Выберите вашу операционную систему</h2>
+            
+            <div class="download-options">
+                <div class="platform">
+                    <a href="https://disk.yandex.ru/d/3GHzfK6bu-wSEw" class="download-btn windows" download>
+                        <i class="fab fa-windows"></i>
+                        Скачать для Windows
+                    </a>
+                    <div class="platform-name">Windows 10/11</div>
+                    <div class="file-size">~24,4 MB • ZIP архив</div>
+                </div>
+                
+                <div class="platform">
+                    <a href="https://disk.yandex.ru/d/i9BTqEAStaFbLw" class="download-btn mac" download>
+                        <i class="fab fa-apple"></i>
+                        Скачать для macOS
+                    </a>
+                    <div class="platform-name">macOS 10.15+</div>
+                    <div class="file-size">~42,7 MB • ZIP архив</div>
+                </div>
+            </div>
+
+            <div class="version-info">
+                <strong>Версия Beta 1.0.0</strong> • Последнее обновление: 03 января 2026
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Быстрая обработка</h3>
+                <p>Аппроксимация функций в реальном времени с использованием оптимизированных алгоритмов</p>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-chart-bar"></i>
+                <h3>Визуализация</h3>
+                <p>Графики исходных данных и аппроксимирующих функций с настройкой отображения</p>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-cogs"></i>
+                <h3>Гибкие настройки</h3>
+                <p>Выбор метода степени полинома, точности вычислений</p>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-download"></i>
+                <h3>Экспорт результатов</h3>
+                <p>Сохранение графиков и данных в PNG формате</p>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-desktop"></i>
+                <h3>Portable версия</h3>
+                <p>Не требует установки, работает сразу после скачивания</p>
+            </div>
+        </section>
+
+        <section class="requirements">
+            <h2>Системные требования</h2>
+            <div class="requirement-list">
+                <div class="requirement-item">
+                    <strong>Windows:</strong> Windows 10/11, 4 ГБ ОЗУ, 100 МБ свободного места
+                </div>
+                <div class="requirement-item">
+                    <strong>macOS:</strong> macOS 10.15 или новее, 4 ГБ ОЗУ
+                </div>
+                <div class="requirement-item">
+                    <strong>Все системы:</strong> Разрешение экрана любое
+                </div>
+            </div>
+        </section>
+
+        <section class="instructions">
+            <h2>Как установить</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>Скачайте файл</h3>
+                    <p>Нажмите на кнопку для вашей операционной системы</p>
+                </div>
+                <div class="step">
+                    <h3>Распакуйте</h3>
+                    <p>Для macOS: распакуйте архив в любую папку</p>
+                </div>
+                <div class="step">
+                    <h3>Запустите приложение</h3>
+                    <p>Windows: запустите prog.exe<br>
+                       macOS: запустите файл prog в папке </p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Function Approximator Pro. MIT License.</p>
+            <p>Приложение предназначено для научных и образовательных целей</p>
+            <div class="version">Версия Beta 1.0.0</div>
+        </footer>
+    </div>
+
+    <script>
+        // Простая логика для отслеживания скачиваний
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const platform = this.classList.contains('windows') ? 'Windows' : 
+                               this.classList.contains('mac') ? 'macOS' : 'Linux';
+                
+                console.log(`Скачивание для ${platform} начато`);
+                
+                // Здесь можно добавить аналитику (Google Analytics и т.д.)
+                // ga('send', 'event', 'Download', 'click', platform);
+                
+                // Если файла нет - показываем сообщение
+                setTimeout(() => {
+                    const hasFile = Math.random() > 0.5; // Заглушка
+                    if (!hasFile) {
+                        alert('Файл в разработке. Скоро будет доступен для скачивания!');
+                        e.preventDefault();
+                    }
+                }, 100);
+            });
+        });
+
+        // Автоматическое определение ОС и подсветка соответствующей кнопки
+        document.addEventListener('DOMContentLoaded', function() {
+            const userOS = detectOS();
+            const downloadBtns = document.querySelectorAll('.download-btn');
+            
+            downloadBtns.forEach(btn => {
+                btn.style.opacity = '1';
+            });
+            
+            // Можно добавить подсветку для текущей ОС
+            // if (userOS === 'Windows') {
+            //     document.querySelector('.download-btn.windows').style.transform = 'scale(1.05)';
+            // }
+        });
+
+        function detectOS() {
+            const userAgent = window.navigator.userAgent;
+            if (userAgent.indexOf("Win") !== -1) return "Windows";
+            if (userAgent.indexOf("Mac") !== -1) return "macOS";
+            if (userAgent.indexOf("Linux") !== -1) return "Linux";
+            return "Unknown";
+        }
+    </script>
+</body>
+</html>
